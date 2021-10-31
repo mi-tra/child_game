@@ -2,14 +2,18 @@
 
 // definisco il numero segreto
 let number = Math.trunc(Math.random() * 20) + 1;
+
 // definisco il punteggio di partenza
 let score = 20;
+
 // definisco il punteggio massimo che assumerà via via risultati differenti
 let highScore = 0;
+
 // uso una funzione per far apparire il messaggio voluto
 const displayMessage = function (message) {
   document.querySelector('.message').textContent = message;
 };
+
 // definisco la funzione che fa funzionare il bottone CONTROLLA
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
@@ -33,15 +37,15 @@ document.querySelector('.check').addEventListener('click', function () {
       highScore = score;
       document.querySelector('.highscore').textContent = highScore;
     }
-    // definisco cosa scrivere se il numero scritto è diverso dal numero segreto
+    // cosa scrivere se il numero scritto è diverso dal numero segreto
   } else if (guess !== number) {
     if (score > 1) {
-      // definisco il messaggio richiamando la funzione di riga 10
+      // il messaggio richiama la funzione di riga 10
       displayMessage(guess > number ? 'Troppo grande..' : 'Troppo piccolo..');
       // definisco il punteggio
       score--;
       document.querySelector('.score').textContent = score;
-      // definisco quando ho finito i tentativi
+      // cosa succede quando ho finito i tentativi
     } else {
       // definisco il richiamo della funzione di riga 10
       displayMessage('Hai perso :(');
@@ -49,42 +53,9 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
-  // too low
-  // } else if (guess < number) {
-  //   if (score > 1) {
-  //     document.querySelector('.message').textContent = 'Troppo piccolo..';
-  //     score--;
-  //     document.querySelector('.score').textContent = score;
-  //   } else {
-  //     document.querySelector('.message').textContent = 'Hai perso :(';
-  //     document.querySelector('.score').textContent = 0;
-  //   }
-
-  //   // too high
-  // } else if (guess > number) {
-  //   if (score > 1) {
-  //     document.querySelector('.message').textContent = 'Troppo grande..';
-  //     score--;
-  //     document.querySelector('.score').textContent = score;
-  //   } else {
-  //     document.querySelector('.message').textContent = 'Hai perso :(';
-  //     document.querySelector('.score').textContent = 0;
-  //   }
-  // }
 });
 
-//mio reset
-
-// document.querySelector('.again').addEventListener('click', function () {
-//   document.querySelector('body').style.backgroundColor = '#222';
-//   document.querySelector('.number').style.width = '15rem';
-//   document.querySelector('.message').textContent = 'Indovina il numero!';
-//   document.querySelector('.score').textContent = 20;
-//   document.querySelector('.number').textContent = '?';
-//   document.querySelector('.guess').value = '';
-// });
-
-// reset corretto
+// reset con bottone again
 document.querySelector('.again').addEventListener('click', function () {
   number = Math.trunc(Math.random() * 20) + 1;
   document.querySelector('body').style.backgroundColor = '#222';
